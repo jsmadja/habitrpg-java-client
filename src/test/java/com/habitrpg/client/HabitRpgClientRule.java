@@ -6,6 +6,7 @@ import org.junit.rules.ExternalResource;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class HabitRpgClientRule extends ExternalResource {
@@ -25,8 +26,7 @@ public class HabitRpgClientRule extends ExternalResource {
     @Override
     protected void after() {
         try {
-            List<Task> tasks = (ArrayList<Task>) client.getTasks();
-            for (Task task : tasks) {
+            for (Task task : client.getTasks()) {
                 client.deleteTask(task.getId());
             }
         } catch (ResourceNotFoundException e) {
