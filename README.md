@@ -8,7 +8,7 @@ First, you have to create a client with your own key:
     AuthenticationInformations authenticationInformations = new AuthenticationInformations("3de939f9-b0c0-4668-ac2c-f5a02abfe6aa", "56dbdfdd-a161-412d-a575-1050639ce8e7");
     HabitRpgClient client = new HabitRpgClient(new URL("https://habitrpg.com"), authenticationInformations);
 
-Then, you can call multiple operations to interact with your HabitRPG account:
+Then, you can call multiple operations to interact with your HabitRPG account.
 
 Get user status
 ---------------
