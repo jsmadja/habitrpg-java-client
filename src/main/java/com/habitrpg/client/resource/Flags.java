@@ -1,8 +1,6 @@
 package com.habitrpg.client.resource;
 
 
-import java.math.BigDecimal;
-
 public class Flags {
 
     private boolean partyEnabled;

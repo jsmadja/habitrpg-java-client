@@ -1,7 +1,5 @@
 package com.habitrpg.client.resource;
 
-import java.math.BigDecimal;
-
 public class Egg {
 
     private String text;

@@ -2,18 +2,20 @@ package com.habitrpg.client.resource;
 
 import org.codehaus.jackson.annotate.JsonProperty;
 
+import java.util.Date;
+
 public class Timestamps {
 
-    private long created;
+    private Date created;
 
     @JsonProperty("loggedin")
-    private long loggedIn;
+    private Date loggedIn;
 
-    public long getCreated() {
+    public Date getCreated() {
         return created;
     }
 
-    public long getLoggedIn() {
+    public Date getLoggedIn() {
         return loggedIn;
     }
 }

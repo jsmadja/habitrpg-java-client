@@ -1,11 +1,13 @@
 package com.habitrpg.client.resource;
 
+import java.util.Date;
+
 public class HistoryValue {
 
-    private long date;
+    private Date date;
     private double value;
 
-    public long getDate() {
+    public Date getDate() {
         return date;
     }
 

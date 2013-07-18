@@ -18,7 +18,6 @@ public class TasksTest {
     @Test
     public void should_unmarshall_user() throws IOException {
         JavaType javaType = construct(List.class, SimpleType.construct(Task.class));
-        List<Task> tasks = new ObjectMapper().readValue(response, javaType);
-        Task task = tasks.get(0);
+        new ObjectMapper().readValue(response, javaType);
     }
 }

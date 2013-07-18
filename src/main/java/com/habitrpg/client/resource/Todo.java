@@ -1,11 +1,13 @@
 package com.habitrpg.client.resource;
 
+import java.util.Date;
+
 public class Todo {
 
-    private long date;
+    private Date date;
     private int value;
 
-    public long getDate() {
+    public Date getDate() {
         return date;
     }
 

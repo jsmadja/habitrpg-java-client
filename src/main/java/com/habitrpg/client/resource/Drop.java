@@ -1,12 +1,13 @@
 package com.habitrpg.client.resource;
 
-import java.math.BigDecimal;
+import java.util.Date;
 
 public class Drop {
-    private long date;
+
+    private Date date;
     private int count;
 
-    public long getDate() {
+    public Date getDate() {
         return date;
     }
 

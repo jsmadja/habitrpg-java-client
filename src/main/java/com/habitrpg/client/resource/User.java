@@ -1,6 +1,7 @@
 package com.habitrpg.client.resource;
 
 import java.util.Collection;
+import java.util.Date;
 import java.util.Map;
 
 public class User {
@@ -12,7 +13,7 @@ public class User {
     private Collection<String> habitIds;
     private Invitations invitations;
     private Items items;
-    private long lastCron;
+    private Date lastCron;
     private Preferences preferences;
     private Collection<String> rewardIds;
     private Stats stats;
@@ -52,7 +53,7 @@ public class User {
         return items;
     }
 
-    public long getLastCron() {
+    public Date getLastCron() {
         return lastCron;
     }
 

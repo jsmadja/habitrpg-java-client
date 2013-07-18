@@ -33,7 +33,7 @@ public class UserTest {
     public void should_unmarshall_user() throws IOException {
         User user = mapper.readValue(response, User.class);
 
-        assertThat(user.getAuth().getTimestamps().getLoggedIn()).isEqualTo(1374097074972L);
+        assertThat(user.getAuth().getTimestamps().getLoggedIn().getTime()).isEqualTo(1374097074972L);
 
         Filters filters = user.getFilters();
         assertThat(filters).isNotNull();
@@ -54,7 +54,7 @@ public class UserTest {
         assertThat(egg.getDialog()).isEqualTo("You've found a Wolf Egg! Find a hatching potion to pour on this egg, and one day it will hatch into a loyal pet.");
 
         Drop drop = user.getItems().getLastDrop();
-        assertThat(drop.getDate()).isEqualTo(1374060986295L);
+        assertThat(drop.getDate().getTime()).isEqualTo(1374060986295L);
         assertThat(drop.getCount()).isEqualTo(3);
 
         Profile profile = user.getProfile();

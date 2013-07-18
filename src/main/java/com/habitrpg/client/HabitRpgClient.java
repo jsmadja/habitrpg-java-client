@@ -2,6 +2,7 @@ package com.habitrpg.client;
 
 import com.habitrpg.client.resource.*;
 
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Collection;
 import java.util.HashMap;
@@ -19,6 +20,15 @@ public class HabitRpgClient {
     public HabitRpgClient(URL serverUrl, AuthenticationInformations authenticationInformations) {
         this.serverUrl = serverUrl;
         this.restClient = new RestClient(withHeaders(authenticationInformations));
+    }
+
+    public HabitRpgClient(AuthenticationInformations authenticationInformations) {
+        try {
+            this.serverUrl = new URL("https://www.habitrpg.com");
+            this.restClient = new RestClient(withHeaders(authenticationInformations));
+        } catch (MalformedURLException e) {
+            throw new IllegalArgumentException(e);
+        }
     }
 
     private Map<String, String> withHeaders(AuthenticationInformations authenticationInformations) {

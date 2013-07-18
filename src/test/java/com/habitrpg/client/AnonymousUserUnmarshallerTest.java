@@ -217,7 +217,7 @@ public class AnonymousUserUnmarshallerTest {
         assertThat(local.getHashedPassword()).isEqualTo("2cb1ba2930e438be2d3e144f91e5a77b7229c8a1");
 
         Timestamps timestamps = auth.getTimestamps();
-        assertThat(timestamps.getCreated()).isEqualTo(1374007028131L);
+        assertThat(timestamps.getCreated().getTime()).isEqualTo(1374007028131L);
     }
 
     @Test
@@ -269,7 +269,7 @@ public class AnonymousUserUnmarshallerTest {
     @Test
     public void should_unmarshall_last_cron() throws IOException {
         User user = mapper.readValue(response, User.class);
-        assertThat(user.getLastCron()).isEqualTo(1373991887514L);
+        assertThat(user.getLastCron().getTime()).isEqualTo(1373991887514L);
     }
 
     @Test
@@ -353,12 +353,12 @@ public class AnonymousUserUnmarshallerTest {
 
         Collection<Todo> todos = history.getTodos();
         Todo todo = todos.iterator().next();
-        assertThat(todo.getDate()).isEqualTo(1374092461554L);
+        assertThat(todo.getDate().getTime()).isEqualTo(1374092461554L);
         assertThat(todo.getValue()).isEqualTo(-8);
 
         Collection<Exp> exp = history.getExp();
         Exp e = exp.iterator().next();
-        assertThat(e.getDate()).isEqualTo(1374092461554L);
+        assertThat(e.getDate().getTime()).isEqualTo(1374092461554L);
         assertThat(e.getValue()).isEqualTo(-15);
     }
 
