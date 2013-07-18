@@ -25,7 +25,7 @@ public class Fetcher {
 
     public String fetch(String strUrl) throws IOException {
         URL url = new URL(strUrl);
-        InputStream stream = null;
+        InputStream stream;
         try {
             URLConnection urlConnection = prepareConnection(url);
             stream = new GZIPInputStream(urlConnection.getInputStream());
