@@ -1,5 +1,7 @@
 package com.habitrpg.client.resource;
 
+import java.util.Collection;
+
 public class Task {
 
     private Direction direction = Direction.up;
@@ -13,6 +15,10 @@ public class Task {
     private boolean up;
     private boolean down;
     private Repeat repeat;
+    private Collection<HistoryValue> history;
+    private Tags tags;
+    private String priority;
+    private int streak;
 
     Task() {
     }
@@ -82,6 +88,22 @@ public class Task {
 
     public Repeat getRepeat() {
         return repeat;
+    }
+
+    public Collection<HistoryValue> getHistory() {
+        return history;
+    }
+
+    public Tags getTags() {
+        return tags;
+    }
+
+    public String getPriority() {
+        return priority;
+    }
+
+    public int getStreak() {
+        return streak;
     }
 
     public enum Direction {

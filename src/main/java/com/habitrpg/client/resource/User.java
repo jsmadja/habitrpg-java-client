@@ -21,6 +21,8 @@ public class User {
     private Collection<String> todoIds;
     private String id;
     private History history;
+    private Filters filters;
+    private Profile profile;
 
     public int getBalance() {
         return balance;
@@ -86,4 +88,11 @@ public class User {
         return history;
     }
 
+    public Filters getFilters() {
+        return filters;
+    }
+
+    public Profile getProfile() {
+        return profile;
+    }
 }

@@ -39,5 +39,5 @@ public class Preferences {
 
     public enum Skin {white}
 
-    public enum Hair {blond}
+    public enum Hair {blond, black}
 }

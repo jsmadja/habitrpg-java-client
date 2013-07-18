@@ -10,7 +10,7 @@ import java.util.Map;
 
 import static org.fest.assertions.Assertions.assertThat;
 
-public class UserUnmarshallerTest {
+public class AnonymousUserUnmarshallerTest {
 
     private ObjectMapper mapper = new ObjectMapper();
 

@@ -9,6 +9,8 @@ public class Items {
     private Collection<String> pets;
     private int shield;
     private int weapon;
+    private Collection<Egg> eggs;
+    private Drop lastDrop;
 
     public int getArmor() {
         return armor;
@@ -28,5 +30,13 @@ public class Items {
 
     public int getWeapon() {
         return weapon;
+    }
+
+    public Collection<Egg> getEggs() {
+        return eggs;
+    }
+
+    public Drop getLastDrop() {
+        return lastDrop;
     }
 }

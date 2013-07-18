@@ -1,5 +1,8 @@
 package com.habitrpg.client;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
@@ -11,6 +14,8 @@ import static com.google.common.io.ByteStreams.toByteArray;
 import static com.google.common.io.Closeables.closeQuietly;
 
 public class Fetcher {
+
+    private static final Logger LOG = LoggerFactory.getLogger(Fetcher.class);
 
     private Map<String, String> headers;
 
@@ -29,6 +34,7 @@ public class Fetcher {
         }
         String content = new String(toByteArray(stream));
         closeQuietly(stream);
+        LOG.debug(content);
         return content;
     }
 
