@@ -9,7 +9,7 @@ import org.junit.Test;
 
 import static org.fest.assertions.Assertions.assertThat;
 
-public class HabitRpgClientIT {
+public class HabitRpgClientTest {
 
     @Rule
     public HabitRpgClientRule rule = new HabitRpgClientRule();

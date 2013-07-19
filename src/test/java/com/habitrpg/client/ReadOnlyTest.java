@@ -7,7 +7,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Collection;
 
-public class ReadOnlyIT {
+public class ReadOnlyTest {
 
     @Test
     public void test() throws MalformedURLException, ResourceNotFoundException {

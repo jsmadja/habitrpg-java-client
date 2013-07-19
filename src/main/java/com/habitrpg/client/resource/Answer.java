@@ -3,16 +3,16 @@ package com.habitrpg.client.resource;
 public class Answer {
 
     private double hp;
-    private int exp;
+    private double exp;
     private int lvl;
-    private int gp;
+    private double gp;
     private double delta;
 
     public double getHp() {
         return hp;
     }
 
-    public int getExp() {
+    public double getExp() {
         return exp;
     }
 
@@ -20,7 +20,7 @@ public class Answer {
         return lvl;
     }
 
-    public int getGp() {
+    public double getGp() {
         return gp;
     }
 

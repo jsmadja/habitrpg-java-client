@@ -7,6 +7,7 @@ public class Profile {
     private String imageUrl;
     private String name;
     private Collection<String> websites;
+    private String blurb;
 
     public String getImageUrl() {
         return imageUrl;
@@ -18,5 +19,9 @@ public class Profile {
 
     public Collection<String> getWebsites() {
         return websites;
+    }
+
+    public String getBlurb() {
+        return blurb;
     }
 }

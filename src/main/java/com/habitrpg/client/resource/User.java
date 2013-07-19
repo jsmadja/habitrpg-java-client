@@ -24,6 +24,7 @@ public class User {
     private History history;
     private Filters filters;
     private Profile profile;
+    private Achievements achievements;
 
     public int getBalance() {
         return balance;
@@ -95,5 +96,13 @@ public class User {
 
     public Profile getProfile() {
         return profile;
+    }
+
+    public int getLevel() {
+        return stats.getLvl();
+    }
+
+    public Achievements getAchievements() {
+        return achievements;
     }
 }

@@ -7,7 +7,7 @@ public class Task {
     private Direction direction = Direction.up;
     private Status status = Status.INCOMPLETE;
     private String notes = "";
-    private int value;
+    private double value;
     private String text;
     private Type type;
     private String id;
@@ -74,7 +74,7 @@ public class Task {
         return type;
     }
 
-    public int getValue() {
+    public double getValue() {
         return value;
     }
 

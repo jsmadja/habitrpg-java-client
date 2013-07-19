@@ -11,12 +11,14 @@ import java.util.List;
 
 public class HabitRpgClientRule extends ExternalResource {
 
+
+    public static final AuthenticationInformations AUTHENTICATION_INFORMATIONS = new AuthenticationInformations("3de939f9-b0c0-4668-ac1c-f5a02abfe6aa", "56dbdfdd-a161-412d-a57c-1050639ce8e7");
+
     private HabitRpgClient client;
 
     public HabitRpgClient client() {
-        AuthenticationInformations authenticationInformations = new AuthenticationInformations("3de939f9-b0c0-4668-ac1c-f5a02abfe6aa", "56dbdfdd-a161-412d-a57c-1050639ce8e7");
         try {
-            client = new HabitRpgClient(new URL("https://habitrpg.com"), authenticationInformations);
+            client = new HabitRpgClient(new URL("https://habitrpg.com"), AUTHENTICATION_INFORMATIONS);
             return client;
         } catch (MalformedURLException e) {
             throw new IllegalStateException(e);

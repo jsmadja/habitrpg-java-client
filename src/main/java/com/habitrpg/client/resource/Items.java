@@ -11,6 +11,7 @@ public class Items {
     private int weapon;
     private Collection<Egg> eggs;
     private Drop lastDrop;
+    private Collection<String> hatchingPotions;
 
     public int getArmor() {
         return armor;
@@ -38,5 +39,9 @@ public class Items {
 
     public Drop getLastDrop() {
         return lastDrop;
+    }
+
+    public Collection<String> getHatchingPotions() {
+        return hatchingPotions;
     }
 }
