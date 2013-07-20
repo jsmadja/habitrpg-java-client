@@ -1,4 +1,4 @@
-package com.habitrpg.client;
+package com.habitrpg.client.unmarshalling;
 
 import com.habitrpg.client.resource.User;
 import org.codehaus.jackson.map.ObjectMapper;
@@ -19,6 +19,5 @@ public class AchievementTest {
         User user = mapper.readValue(response, User.class);
 
         assertThat(user.getAchievements().isUltimateGear()).isTrue();
-
     }
 }

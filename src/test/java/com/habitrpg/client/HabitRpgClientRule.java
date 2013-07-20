@@ -3,12 +3,6 @@ package com.habitrpg.client;
 import com.habitrpg.client.resource.Task;
 import org.junit.rules.ExternalResource;
 
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-
 public class HabitRpgClientRule extends ExternalResource {
 
 
@@ -17,12 +11,10 @@ public class HabitRpgClientRule extends ExternalResource {
     private HabitRpgClient client;
 
     public HabitRpgClient client() {
-        try {
-            client = new HabitRpgClient(new URL("https://habitrpg.com"), AUTHENTICATION_INFORMATIONS);
-            return client;
-        } catch (MalformedURLException e) {
-            throw new IllegalStateException(e);
-        }
+        Configuration configuration = new Configuration();
+        configuration.setFailOnUnknownProperties(true);
+        client = new HabitRpgClient(AUTHENTICATION_INFORMATIONS, configuration);
+        return client;
     }
 
     @Override

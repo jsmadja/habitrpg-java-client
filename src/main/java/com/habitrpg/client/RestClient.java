@@ -1,12 +1,14 @@
 package com.habitrpg.client;
 
 import com.habitrpg.client.resource.Task;
+import com.habitrpg.client.resource.User;
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
 import com.sun.jersey.api.client.config.ClientConfig;
 import com.sun.jersey.api.client.config.DefaultClientConfig;
 import org.codehaus.jackson.jaxrs.JacksonJsonProvider;
+import org.codehaus.jackson.map.DeserializationConfig;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.map.type.SimpleType;
 import org.codehaus.jackson.type.JavaType;
@@ -14,9 +16,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Map;
 
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
+import static org.codehaus.jackson.map.DeserializationConfig.Feature.FAIL_ON_UNKNOWN_PROPERTIES;
 import static org.codehaus.jackson.map.type.CollectionType.construct;
 
 public class RestClient {
@@ -27,6 +31,8 @@ public class RestClient {
 
     private Logger LOG = LoggerFactory.getLogger(RestClient.class);
 
+    private Configuration configuration;
+
     public RestClient(Map<String, String> headers) {
         ClientConfig clientConfig = new DefaultClientConfig();
         clientConfig.getClasses().add(JacksonJsonProvider.class);
@@ -35,10 +41,23 @@ public class RestClient {
         this.headers = headers;
     }
 
+    public RestClient(Map<String, String> headers, Configuration configuration) {
+        ClientConfig clientConfig = new DefaultClientConfig();
+        clientConfig.getClasses().add(JacksonJsonProvider.class);
+        this.client = Client.create(clientConfig);
+        this.fetcher = new Fetcher(headers);
+        this.headers = headers;
+        this.configuration = configuration;
+    }
+
+    public RestClient(Configuration configuration) {
+        this(new HashMap<String, String>(), configuration);
+    }
+
     public <T> T get(String url, Class<T> clazz) throws ResourceNotFoundException {
         debugGet(url);
         try {
-            return new ObjectMapper().readValue(fetcher.fetch(url), clazz);
+            return newMapper().readValue(fetcher.fetch(url), clazz);
         } catch (Throwable t) {
             throw new ResourceNotFoundException("Can't get resource of type " + clazz.getName() + " at '" + url + "'", t);
         }
@@ -48,7 +67,7 @@ public class RestClient {
         debugGet(url);
         try {
             JavaType javaType = construct(collectionClass, SimpleType.construct(objectClass));
-            return new ObjectMapper().readValue(fetcher.fetch(url), javaType);
+            return newMapper().readValue(fetcher.fetch(url), javaType);
         } catch (Throwable t) {
             throw new ResourceNotFoundException("Can't get resource of type " + collectionClass.getSimpleName() + "<" + objectClass.getSimpleName() + ">" + " at '" + url + "'", t);
         }
@@ -107,7 +126,20 @@ public class RestClient {
     }
 
     private String body(Object object) throws IOException {
-        return new ObjectMapper().writeValueAsString(object);
+        return newMapper().writeValueAsString(object);
     }
 
+    private ObjectMapper newMapper() {
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.configure(FAIL_ON_UNKNOWN_PROPERTIES, configuration.shouldFailOnUnknownProperties());
+        return objectMapper;
+    }
+
+    public <T> T unmarshall(String response, Class<T> clazz) {
+        try {
+            return newMapper().readValue(response, clazz);
+        } catch (IOException e) {
+            throw new IllegalStateException(e);
+        }
+    }
 }

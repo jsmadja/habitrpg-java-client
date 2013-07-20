@@ -1,4 +1,4 @@
-package com.habitrpg.client;
+package com.habitrpg.client.unmarshalling;
 
 import com.habitrpg.client.resource.Task;
 import org.codehaus.jackson.map.ObjectMapper;

@@ -16,6 +16,7 @@ import static java.lang.String.format;
 
 public class HabitRpgClient {
 
+    public static final String HTTPS_WWW_HABITRPG_COM = "https://www.habitrpg.com";
     private final URL serverUrl;
 
     private final RestClient restClient;
@@ -26,13 +27,22 @@ public class HabitRpgClient {
     }
 
     public HabitRpgClient(AuthenticationInformations authenticationInformations) {
-        this("https://www.habitrpg.com", authenticationInformations);
+        this(HTTPS_WWW_HABITRPG_COM, authenticationInformations);
     }
 
     public HabitRpgClient(String url, AuthenticationInformations authenticationInformations) {
         try {
             this.serverUrl = new URL(url);
             this.restClient = new RestClient(withHeaders(authenticationInformations));
+        } catch (MalformedURLException e) {
+            throw new IllegalArgumentException(e);
+        }
+    }
+
+    public HabitRpgClient(AuthenticationInformations authenticationInformations, Configuration configuration) {
+        try {
+            this.serverUrl = new URL(HTTPS_WWW_HABITRPG_COM);
+            this.restClient = new RestClient(withHeaders(authenticationInformations), configuration);
         } catch (MalformedURLException e) {
             throw new IllegalArgumentException(e);
         }
