@@ -5,7 +5,7 @@
         </encoder>
     </appender>
     <root level="WARN">
-        <appender-ref ref="STDOUT" />
+        <appender-ref ref="STDOUT"/>
     </root>
-    <logger name="com.habitrpg" level="DEBUG" />
+    <logger name="com.habitrpg" level="DEBUG"/>
 </configuration>

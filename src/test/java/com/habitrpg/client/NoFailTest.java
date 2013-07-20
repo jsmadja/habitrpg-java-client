@@ -1,14 +1,9 @@
 package com.habitrpg.client;
 
 import com.habitrpg.client.resource.User;
-import org.codehaus.jackson.map.DeserializationConfig;
-import org.codehaus.jackson.map.ObjectMapper;
 import org.junit.Test;
 
 import java.io.IOException;
-import java.util.Map;
-
-import static org.fest.assertions.Assertions.assertThat;
 
 public class NoFailTest {
 

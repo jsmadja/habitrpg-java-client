@@ -51,7 +51,7 @@ public class CurlCommand {
         for (Map.Entry<String, String> header : headers.entrySet()) {
             sb.append(" -H '").append(header.getKey()).append(": ").append(header.getValue()).append("'");
         }
-        if(body != null) {
+        if (body != null) {
             sb.append(" -d '").append(body).append("'");
         }
         sb.append(" ").append(url);

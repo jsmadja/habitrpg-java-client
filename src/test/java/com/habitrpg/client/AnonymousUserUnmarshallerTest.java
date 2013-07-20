@@ -36,15 +36,15 @@ public class AnonymousUserUnmarshallerTest {
                     "\"history\":{" +
                     "\"todos\":[" +
                     "{" +
-                        "\"date\":1374092461554," +
-                        "\"value\":-8" +
+                    "\"date\":1374092461554," +
+                    "\"value\":-8" +
                     "}]," +
                     "\"exp\":[" +
                     "{" +
-                        "\"date\":1374092461554," +
-                        "\"value\":-15" +
+                    "\"date\":1374092461554," +
+                    "\"value\":-15" +
                     "}]}" +
-                    ","+
+                    "," +
                     "\"invitations\":{" +
                     "\"party\":null," +
                     "\"guilds\":[]" +

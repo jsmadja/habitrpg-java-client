@@ -2,7 +2,6 @@ package com.habitrpg.client.unmarshalling;
 
 import com.habitrpg.client.resource.User;
 import org.codehaus.jackson.map.ObjectMapper;
-import org.fest.assertions.Assertions;
 import org.junit.Test;
 
 import java.io.IOException;

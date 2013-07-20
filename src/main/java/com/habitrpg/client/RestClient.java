@@ -1,14 +1,11 @@
 package com.habitrpg.client;
 
 import com.habitrpg.client.resource.Task;
-import com.habitrpg.client.resource.User;
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
 import com.sun.jersey.api.client.config.ClientConfig;
 import com.sun.jersey.api.client.config.DefaultClientConfig;
-import org.codehaus.jackson.jaxrs.JacksonJsonProvider;
-import org.codehaus.jackson.map.DeserializationConfig;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.map.type.SimpleType;
 import org.codehaus.jackson.type.JavaType;
@@ -34,19 +31,15 @@ public class RestClient {
     private Configuration configuration;
 
     public RestClient(Map<String, String> headers) {
-        ClientConfig clientConfig = new DefaultClientConfig();
-        clientConfig.getClasses().add(JacksonJsonProvider.class);
-        this.client = Client.create(clientConfig);
-        this.fetcher = new Fetcher(headers);
-        this.headers = headers;
+        this(headers, new Configuration());
     }
 
     public RestClient(Map<String, String> headers, Configuration configuration) {
         ClientConfig clientConfig = new DefaultClientConfig();
-        clientConfig.getClasses().add(JacksonJsonProvider.class);
+        clientConfig.getSingletons().add(new MyObjectMapperProvider(configuration));
         this.client = Client.create(clientConfig);
-        this.fetcher = new Fetcher(headers);
         this.headers = headers;
+        this.fetcher = new Fetcher(headers);
         this.configuration = configuration;
     }
 
